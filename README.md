@@ -40,6 +40,34 @@ This plot shows the 10 articles with the fewest months of available data for mob
 ## Requirements
 Python 3.x, matplotlib, NumPy, Requests, defaultdict, and Pandas
 
+## License and Terms of Use
+The data is sourced from Wikipedia under the Wikimedia Foundation's terms. Please review the Wikimedia Foundation REST API terms of use for more details.
+
+## API Documentation
+The data is acquired using the Wikipedia Pageviews API. For additional details on how the API works, please refer to the official API documentation.
+
+## Intermediary and Final Output Files
+### Intermediary Files:
+
+academy_monthly_mobile_201507-202309.json: Contains monthly mobile access data.
+academy_monthly_desktop_201507-202309.json: Contains monthly desktop access data.
+academy_monthly_cumulative_201507-202309.json: Contains monthly cumulative data.
+
+### Final Output Files:
+
+max_min_avg_pageviews.png: Plot of Maximum and Minimum Average Monthly Pageviews.
+top_10_peak_pageviews.png: Plot of Top 10 Peak Pageviews.
+fewest_months_data.png: Plot of Articles with the Fewest Months of Data.
+
+Each JSON file has the following fields:
+Article_Title: Name of the Wikipedia article.
+Timestamps: Timestamp for each data point in the format YYYYMMDDHH.
+Pageviews: Number of views for the article at the given timestamp.
+
+## Known Issues and Special Considerations
+Timestamp Alignment: The data is aligned based on the longest set of timestamps available among the articles, filling in zeros for missing data.
+Character Encoding: Special characters like '/' in article titles may cause issues with API calls. These need to be URL-encoded
+
 ## Running the Code
 Load the JSON files into Python dictionaries.
 Follow the procedures described in the 'Data Processing' section.
