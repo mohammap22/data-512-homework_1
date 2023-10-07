@@ -25,8 +25,8 @@ The JSON files are loaded into Python dictionaries. Each dictionary maps article
 ### Data Alignment and Sorting
 The data for each article is aligned based on the longest set of timestamps available among the articles of interest for each plot. Missing values are filled with zeros. The data is then sorted by timestamps for easier plotting and analysis.
 
-### Data Analysis and Visualization
-Three sets of time-series plots are generated using the matplotlib library in python:
+## Data Analysis and Visualization
+Three sets of time-series plots are generated using the matplotlib library in Python:
 
 1. Maximum and Minimum Average Monthly Pageviews
 This plot shows the articles with the highest and lowest average monthly pageviews for mobile and desktop access.
@@ -41,32 +41,35 @@ This plot shows the 10 articles with the fewest months of available data for mob
 Python 3.x, matplotlib, NumPy, Requests, defaultdict, and Pandas
 
 ## License and Terms of Use
-The data is sourced from Wikipedia under the Wikimedia Foundation's terms. Please review the Wikimedia Foundation REST API terms of use for more details.
+The data is sourced from Wikipedia under the Wikimedia Foundation's terms. Please review the Wikimedia Foundation REST API [terms of use](https://www.mediawiki.org/wiki/REST_API#Terms_and_conditions) for more details.
 
 ## API Documentation
-The data is acquired using the Wikipedia Pageviews API. For additional details on how the API works, please refer to the official API documentation.
+The data is acquired using the [Wikipedia Pageviews API](https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews). For additional details on how the API works, please refer to the official [API documentation](https://wikimedia.org/api/rest_v1/#/Pageviews%20data).
 
 ## Intermediary and Final Output Files
 ### Intermediary Files:
 
-academy_monthly_mobile_201507-202309.json: Contains monthly mobile access data.
-academy_monthly_desktop_201507-202309.json: Contains monthly desktop access data.
-academy_monthly_cumulative_201507-202309.json: Contains monthly cumulative data.
+`academy_monthly_mobile_201507-202309.json`: Contains monthly mobile (app + webpage) access data.
+
+`academy_monthly_desktop_201507-202309.json`: Contains monthly desktop access data.
+
+`academy_monthly_cumulative_201507-202309.json`: Contains monthly cumulative data.
+
 
 ### Final Output Files:
 
-max_min_avg_pageviews.png: Plot of Maximum and Minimum Average Monthly Pageviews.
-top_10_peak_pageviews.png: Plot of Top 10 Peak Pageviews.
-fewest_months_data.png: Plot of Articles with the Fewest Months of Data.
+`max_min_avg_pageviews.png`: Plot of maximum and minimum average monthly views.
+`top_10_peak_pageviews.png`: Plot of top 10 peak views.
+`fewest_months_data.png`: Plot of articles with the fewest months of data.
 
 Each JSON file has the following fields:
-Article_Title: Name of the Wikipedia article.
-Timestamps: Timestamp for each data point in the format YYYYMMDDHH.
-Pageviews: Number of views for the article at the given timestamp.
+`Article_Title`: Name of the Wikipedia article.
+`Timestamps`: Timestamp for each data point in the format YYYYMMDDHH.
+`Pageviews`: Number of views for the article at the given timestamp.
 
 ## Known Issues and Special Considerations
 Timestamp Alignment: The data is aligned based on the longest set of timestamps available among the articles, filling in zeros for missing data.
-Character Encoding: Special characters like '/' in article titles may cause issues with API calls. These need to be URL-encoded
+Runtime: Takes a significant amount of time to make all the API calls to retrieve all the data. On average it took 30 minutes on my machine. 
 
 ## Running the Code
 Load the JSON files into Python dictionaries.
